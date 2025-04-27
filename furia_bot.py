@@ -1,16 +1,50 @@
-# This is a sample Python script.
+from telegram import Update  
+from telegram.ext import Application, CommandHandler, MessageHandler, filters  
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+TOKEN = "SEU_TOKEN_AQUI"  
 
+# ---- COMANDOS ---- #
+async def start(update: Update, context):
+    mensagem = """  
+    🐆 *É FURIA, PORRA!* 🔥  
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    O que você quer saber?  
 
+    /elenco - Elenco atual  
+    /jogos - Próximos jogos  
+    /memes - Memes icônicos  
+    """
+    await update.message.reply_text(mensagem, parse_mode="Markdown")
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+async def elenco(update: Update, context):
+    jogadores = """  
+    🇧🇷 *Elenco FURIA CS2*:  
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    - KSCERATO (AWP)  
+    - FalleN (IGL)  
+    - arT (Entry)  
+    - chelo (Support)  
+    - guerri (Técnico)  
+    """
+    await update.message.reply_text(jogadores, parse_mode="Markdown")
+
+async def jogos(update: Update, context):
+    proximos_jogos = """  
+    🗓 *Próximos Jogos*:  
+
+    05/08 - FURIA vs Vitality (ESL Pro League)  
+    10/08 - FURIA vs NAVI (BLAST Premier)  
+    """
+    await update.message.reply_text(proximos_jogos, parse_mode="Markdown")
+
+# ---- CONFIGURAÇÃO DO BOT ---- #
+if __name__ == "__main__":
+    app = Application.builder().token(TOKEN).build()
+
+    # Adiciona os comandos
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("elenco", elenco))
+    app.add_handler(CommandHandler("jogos", jogos))
+
+    print("Bot está rodando! 🐆")
+    app.run_polling()  
