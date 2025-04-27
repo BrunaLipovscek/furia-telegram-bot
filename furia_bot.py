@@ -68,6 +68,21 @@ async def vitorias(update: Update, context):
     """
     await update.message.reply_text(mensagem_vitorias, parse_mode="HTML")
 
+async def live(update: Update, context):
+    placar = """
+    🔴 *LIVE NOW*: FURIA vs NAVI  
+    Map: Inferno  
+    Placar: FURIA 10x7 NAVI  
+    Próximo round em: 1:30  
+    """
+    await update.message.reply_text(placar, parse_mode="Markdown")
+
+async def torcida(update: Update, context):
+    frases = ["FURIA!", "VAMO PORRA!", "ARTASTICO!", "FALLEN GOD!"]
+    await update.message.reply_text("🐆 INICIANDO TORCIDA VIRTUAL 🐆")
+    for frase in frases:
+        sleep(1)
+        await update.message.reply_text(frase.upper())
 
 async def contato(update: Update, context):
     await update.message.reply_text(
