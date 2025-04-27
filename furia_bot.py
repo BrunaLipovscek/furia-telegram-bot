@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import os
 import random
 from time import sleep
+from telegram import ReplyKeyboardMarkup
 
 load_dotenv()
 
@@ -30,9 +31,22 @@ async def start(update: Update, context):
     """  # Bora deixar os links clicáveis com o Markdown - se não funcionar uso HTML
     await update.message.reply_text(mensagem, parse_mode="Markdown")
 
-async def mensagem_inicial(update: Update, context): #responde com o menu a algumas palavras
-    if update.message.text.lower() in ["oi", "olá", "ola", "eae", "opa", "furia", "start", "menu"]:
+
+async def handle_messages(update: Update, context):
+    # 1º - Verifica o Easter Egg (prioridade máxima)
+    if "art" in update.message.text.lower():
+        await easter_egg(update, context)
+        return  # Sai da função depois de executar
+    # 2º - Triggers do menu
+    triggers = ["oi", "olá", "ola", "eae", "opa", "furia", "start", "menu"]
+    if update.message.text.lower() in triggers:
         await start(update, context)
+    else:
+        await update.message.reply_text(
+            "🐆 *FURIA BOT*: Eita, não entendi! kkk Digite /start",
+            parse_mode="Markdown",
+            reply_markup=ReplyKeyboardMarkup([["/start"]], resize_keyboard=True)
+        )
 
 async def jogadores(update: Update, context):
     await update.message.reply_text("Peraê, vou checar quem saiu e quem entrou...")
@@ -151,7 +165,7 @@ if __name__ == "__main__":
     app = Application.builder().token(TOKEN).build()
 
     # Adicionando os comandos
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, easter_egg))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_messages))
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("jogadores", jogadores))
     app.add_handler(CommandHandler("jogos", jogos))
@@ -161,7 +175,6 @@ if __name__ == "__main__":
     app.add_handler(CommandHandler("torcida", torcida))
     app.add_handler(CommandHandler("live", live))
     app.add_handler(CommandHandler("ajuda", ajuda))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, mensagem_inicial))
     try:
         print("Tá saindo da jaula o monstro! 🐆")
         app.run_polling()
