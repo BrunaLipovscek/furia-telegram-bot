@@ -89,9 +89,24 @@ async def contato(update: Update, context):
         "🔗 *Links Oficiais da FURIA*:\n\n"
         "🐆 Site: https://furia.gg\n"
         "📸 Instagram: [@furiagg](https://instagram.com/furiagg)",
-        parse_mode="Markdown"
+        parse_mode="Markdown",
+        disable_web_page_preview = True
     )
 
+async def whatsapp(update: Update, context):
+    await update.message.reply_text(
+        "📲 *Contato Inteligente da FURIA* (Beta)\n\n"
+        "Entre no WhatsApp oficial do time para:\n"
+        "- Notícias exclusivas\n"
+        "- Interação direta\n"
+        "- Promoções\n\n"
+        "👉 [CLIQUE AQUI PARA ACESSAR]("
+        "https://wa.me/5511993404466"
+        ")\n\n"
+        "*Obs:* Funcionalidades em teste pela FURIA.",
+        parse_mode="Markdown",
+        disable_web_page_preview=True
+    )
 
 async def ajuda(update: Update, context):
     await update.message.reply_text(
@@ -122,16 +137,19 @@ if __name__ == "__main__":
     app = Application.builder().token(TOKEN).build()
 
     # Adicionando os comandos
-    app.add_handler(CommandHandler("start", start))
-    app.add_handler(CommandHandler("jogadores", jogadores))
-    app.add_handler(CommandHandler("jogos", jogos))
-    app.add_handler(CommandHandler("memes", memes))  # Só tem 2 memes, por enquanto rsrs
-    app.add_handler(CommandHandler("vitorias", vitorias))
-    app.add_handler(CommandHandler("contato", contato))
-    app.add_handler(CommandHandler("ajuda", ajuda))
+    app.add_handler(CommandHandler("Start", start))
+    app.add_handler(CommandHandler("Jogadores", jogadores))
+    app.add_handler(CommandHandler("Jogos", jogos))
+    app.add_handler(CommandHandler("Memes", memes))  # Só tem 2 memes, por enquanto rsrs
+    app.add_handler(CommandHandler("Vitórias", vitorias))
+    app.add_handler(CommandHandler("Contato", contato))
+    app.add_handler(CommandHandler("WhatsApp", whatsapp))
+    app.add_handler(CommandHandler("Torcida", torcida))
+    app.add_handler(CommandHandler("Live", live))
+    app.add_handler(CommandHandler("Ajuda", ajuda))
     try:
         print("Tá saindo da jaula o monstro! 🐆")
         app.run_polling()
     except Exception as e:
-        print(f"Putz, F5 for respect: {e}")
+        print(f"Putz, F for respect: {e}")
         print("Mas o arT já tá rushando B pra resolver! 💥")  # hahahahahha
