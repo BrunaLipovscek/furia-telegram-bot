@@ -131,18 +131,27 @@ async def memes(update: Update, context):
         print(f"Erro: {e}")  # Mostra o erro real do terminal
         await update.message.reply_text("Bugou, meu! Mas o KSCERATO já tá consertando 🛠️🐆")
 
-async def easter_egg(update: Update, context):
-    surpresa = f"memes/easter_egg.gif"
+
+async def easter_egg(update: Update, context): # easter egg so pela farra kkkk
     if "art" in update.message.text.lower():
-        await update.message.reply_video(open(surpresa, "rb")
-        sleep(1)
-        await update.message.reply_text("🤩 SURPRESAAAAAAAA!"))
+        try:
+            await update.message.reply_animation(
+                open("memes/easter_egg.gif", "rb"),  # Ou .gif se for animação
+                caption="🤯 ARTASTICOOOOO! SURPRESAAAAA!",
+                parse_mode="Markdown"
+            )
+            sleep(1)
+            await update.message.reply_text("Só os verdadeiros fãs conhecem esse segredo! 🐆🔥")
+        except Exception as e:
+            print(f"Erro no Easter Egg: {e}")
+            await update.message.reply_text("O arT rushou demais e bugou a surpresa! 🛠️")
 
 # Configuração do ChatBot
 if __name__ == "__main__":
     app = Application.builder().token(TOKEN).build()
 
     # Adicionando os comandos
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, easter_egg))
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("jogadores", jogadores))
     app.add_handler(CommandHandler("jogos", jogos))
