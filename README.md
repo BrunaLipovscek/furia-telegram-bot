@@ -5,7 +5,10 @@ Bot oficial (não oficial) da FURIA!
 - `/start` - Mensagem de boas-vindas  
 - `/memes` - Memes aleatórios  
 - `/vitorias` - Últimos resultados  
-- [etc...]  
+- `/jogadores` - Players atuais  
+- `/jogos` - Próximas partidas 
+- `/contato` - Links oficiais 
+- `/ajuda` - Comandos possíveis   
 
 ## Como executar  
 1. Clone o repositório  
