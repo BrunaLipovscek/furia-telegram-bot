@@ -31,8 +31,8 @@ async def start(update: Update, context):
     await update.message.reply_text(mensagem, parse_mode="Markdown")
 
 async def mensagem_inicial(update: Update, context): #responde com o menu a algumas palavras
-    if update.message.text.lower() in ["oi", "olá", "ola", "eae", "furia", "start", "menu"]:
-        await start(update context)
+    if update.message.text.lower() in ["oi", "olá", "ola", "eae", "opa", "furia", "start", "menu"]:
+        await start(update, context)
 
 async def jogadores(update: Update, context):
     await update.message.reply_text("Peraê, vou checar quem saiu e quem entrou...")
@@ -131,6 +131,12 @@ async def memes(update: Update, context):
         print(f"Erro: {e}")  # Mostra o erro real do terminal
         await update.message.reply_text("Bugou, meu! Mas o KSCERATO já tá consertando 🛠️🐆")
 
+async def easter_egg(update: Update, context):
+    surpresa = f"memes/easter_egg.gif"
+    if "art" in update.message.text.lower():
+        await update.message.reply_video(open(surpresa, "rb")
+        sleep(1)
+        await update.message.reply_text("🤩 SURPRESAAAAAAAA!"))
 
 # Configuração do ChatBot
 if __name__ == "__main__":
