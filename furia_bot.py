@@ -23,11 +23,16 @@ async def start(update: Update, context):
     /jogos - Próximos jogos
     /vitorias - Conquistas mais recentes
     /memes - Memes icônicos
+    /live - Placar ao vivo (mockado)
+    /torcida - Gritos de guerra!
     /contato - Links oficiais
-    /ajuda
+    /ajuda - Lista de comandos
     """  # Bora deixar os links clicáveis com o Markdown - se não funcionar uso HTML
     await update.message.reply_text(mensagem, parse_mode="Markdown")
 
+async def mensagem_inicial(update: Update, context): #responde com o menu a algumas palavras
+    if update.message.text.lower() in ["oi", "olá", "ola", "eae", "furia", "start", "menu"]:
+        await start(update context)
 
 async def jogadores(update: Update, context):
     await update.message.reply_text("Peraê, vou checar quem saiu e quem entrou...")
@@ -88,25 +93,18 @@ async def contato(update: Update, context):
     await update.message.reply_text(
         "🔗 *Links Oficiais da FURIA*:\n\n"
         "🐆 Site: https://furia.gg\n"
-        "📸 Instagram: [@furiagg](https://instagram.com/furiagg)",
-        parse_mode="Markdown",
-        disable_web_page_preview = True
-    )
-
-async def whatsapp(update: Update, context):
-    await update.message.reply_text(
-        "📲 *Contato Inteligente da FURIA* (Beta)\n\n"
-        "Entre no WhatsApp oficial do time para:\n"
+        "📸 Instagram: [@furiagg](https://instagram.com/furiagg)\n\n"
+        "📲 *Entre no WhatsApp oficial do time para:*\n"
         "- Notícias exclusivas\n"
         "- Interação direta\n"
         "- Promoções\n\n"
         "👉 [CLIQUE AQUI PARA ACESSAR]("
         "https://wa.me/5511993404466"
-        ")\n\n"
-        "*Obs:* Funcionalidades em teste pela FURIA.",
+        ")\n\n",
         parse_mode="Markdown",
-        disable_web_page_preview=True
+        disable_web_page_preview = True
     )
+
 
 async def ajuda(update: Update, context):
     await update.message.reply_text(
@@ -116,6 +114,8 @@ async def ajuda(update: Update, context):
         "/jogos - Próximas partidas\n"
         "/memes - Memes aleatórios\n"
         "/vitorias - Ùltimos resultados\n"
+        "/live - Placar ao vivo (mockado)\n"
+        "/torcida - Gritos de guerra!\n"
         "/contato - Links oficiais",
         parse_mode="Markdown"
     )
@@ -137,16 +137,16 @@ if __name__ == "__main__":
     app = Application.builder().token(TOKEN).build()
 
     # Adicionando os comandos
-    app.add_handler(CommandHandler("Start", start))
-    app.add_handler(CommandHandler("Jogadores", jogadores))
-    app.add_handler(CommandHandler("Jogos", jogos))
-    app.add_handler(CommandHandler("Memes", memes))  # Só tem 2 memes, por enquanto rsrs
-    app.add_handler(CommandHandler("Vitórias", vitorias))
-    app.add_handler(CommandHandler("Contato", contato))
-    app.add_handler(CommandHandler("WhatsApp", whatsapp))
-    app.add_handler(CommandHandler("Torcida", torcida))
-    app.add_handler(CommandHandler("Live", live))
-    app.add_handler(CommandHandler("Ajuda", ajuda))
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("jogadores", jogadores))
+    app.add_handler(CommandHandler("jogos", jogos))
+    app.add_handler(CommandHandler("memes", memes))  # Só tem 2 memes, por enquanto rsrs
+    app.add_handler(CommandHandler("vitorias", vitorias))
+    app.add_handler(CommandHandler("contato", contato))
+    app.add_handler(CommandHandler("torcida", torcida))
+    app.add_handler(CommandHandler("live", live))
+    app.add_handler(CommandHandler("ajuda", ajuda))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, mensagem_inicial))
     try:
         print("Tá saindo da jaula o monstro! 🐆")
         app.run_polling()

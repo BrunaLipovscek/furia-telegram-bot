@@ -6,12 +6,11 @@ Bot oficial (não oficial) da FURIA!
 - `/memes` - Memes aleatórios  
 - `/vitorias` - Últimos resultados  
 - `/jogadores` - Players atuais  
-- `/jogos` - Próximas partidas 
-- `/contato` - Links oficiais 
-- `/whatsapp` - Links oficiais 
-- `/torcida` - Links oficiais 
-- `/live` - Links oficiais 
-- `/ajuda` - Comandos possíveis   
+- `/jogos` - Próximas partidas
+- `/torcida` - Gritos de guerra!
+- `/live` - Placar ao vivo (mockado)
+- `/contato` - Links oficiais
+- `/ajuda` - Comandos disponíveis  
 
 ## Como executar  
 1. Clone o repositório  
