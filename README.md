@@ -1,13 +1,13 @@
-# Desafio de Engenharia de Software - Fúria Esports
+# Desafio Fúria - Análise de Dados
 
 ## Objetivo
-[Breve descrição do desafio + sua abordagem]
-
-## Tecnologias
-- Python 3.x
-- Bibliotecas: [listar as usadas]
+[Descreva com suas palavras]
 
 ## Como Executar
 ```bash
-pip install -r requirements.txt
+pip install pandas
 python src/main.py
+
+Tecnologias
+Python 3
+pandas
