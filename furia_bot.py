@@ -38,12 +38,12 @@ async def handle_messages(update: Update, context):
         await easter_egg(update, context)
         return  # Sai da função depois de executar
     # 2º - Triggers do menu
-    triggers = ["oi", "olá", "ola", "eae", "opa", "furia", "start", "menu"]
+    triggers = ["oi", "oie", "oiê", "olá", "ola", "eae", "opa", "furia", "start", "menu"]
     if update.message.text.lower() in triggers:
         await start(update, context)
     else:
         await update.message.reply_text(
-            "🐆 *FURIA BOT*: Eita, não entendi! kkk Digite /start",
+            "🐆 *FURIA BOT*: Eita, não entendi! kkk Digite /start pra ver as opções disponíveis!",
             parse_mode="Markdown",
             reply_markup=ReplyKeyboardMarkup([["/start"]], resize_keyboard=True)
         )
