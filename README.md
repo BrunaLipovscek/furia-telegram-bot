@@ -1,13 +1,14 @@
-# Desafio Fúria - Análise de Dados
+# 🐆 FURIA Bot - Telegram
+Bot oficial (não oficial) da FURIA!  
 
-## Objetivo
-[Descreva com suas palavras]
+## Comandos  
+- `/start` - Mensagem de boas-vindas  
+- `/memes` - Memes aleatórios  
+- `/vitorias` - Últimos resultados  
+- [etc...]  
 
-## Como Executar
-```bash
-pip install pandas
-python src/main.py
-
-Tecnologias
-Python 3
-pandas
+## Como executar  
+1. Clone o repositório  
+2. Instale as dependências: `pip install -r requirements.txt`  
+3. Crie um arquivo `.env` com `TELEGRAM_TOKEN=seu_token`  
+4. Execute: `python furia_bot.py`  
