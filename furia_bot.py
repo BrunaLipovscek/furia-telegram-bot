@@ -31,16 +31,33 @@ async def start(update: Update, context):
     """  # Bora deixar os links clicáveis com o Markdown - se não funcionar uso HTML
     await update.message.reply_text(mensagem, parse_mode="Markdown")
 
+async def ajuda(update: Update, context):
+    await update.message.reply_text(
+        "🐆 *COMANDOS DISPONÍVEIS*:\n\n"
+        "/start - Inicia o bot\n"
+        "/jogadores - Time atual\n"
+        "/jogos - Próximas partidas\n"
+        "/memes - Memes aleatórios\n"
+        "/vitorias - Ùltimos resultados\n"
+        "/live - Placar ao vivo (mockado)\n"
+        "/torcida - Gritos de guerra!\n"
+        "/contato - Links oficiais",
+        parse_mode="Markdown"
+    )
 
 async def handle_messages(update: Update, context):
     # 1º - Verifica o Easter Egg (prioridade máxima)
-    if "art" in update.message.text.lower():
+    if "art" == update.message.text.lower().strip():
         await easter_egg(update, context)
-        return  # Sai da função depois de executar
+        return # Sai da função depois de executar
     # 2º - Triggers do menu
     triggers = ["oi", "oie", "oiê", "olá", "ola", "eae", "opa", "furia", "start", "menu"]
     if update.message.text.lower() in triggers:
         await start(update, context)
+    elif "ajuda" in update.message.text.lower():
+        sleep(1)
+        await update.message.reply_text("Opa, tá precisando de ajuda?")
+        await ajuda(update, context)
     else:
         await update.message.reply_text(
             "🐆 *FURIA BOT*: Eita, não entendi! kkk Digite /start pra ver as opções disponíveis!",
@@ -97,11 +114,14 @@ async def live(update: Update, context):
     await update.message.reply_text(placar, parse_mode="Markdown")
 
 async def torcida(update: Update, context):
-    frases = ["FURIA!", "VAMO PORRA!", "ARTASTICO!", "FALLEN GOD!"]
-    await update.message.reply_text("🐆 INICIANDO TORCIDA VIRTUAL 🐆")
-    for frase in frases:
-        sleep(1)
-        await update.message.reply_text(frase.upper())
+    await update.message.reply_text(
+        "🐆 INICIANDO TORCIDA VIRTUAL 🐆\n\n"
+        "É FURIAAAAAA!\n"
+        "VAMO PORRAAAAAA\n"
+        "ARTASTICO!\n"
+        "FALLEN GOD!"
+    )
+    await update.message.reply_animation(open("memes/torcida.gif", "rb"))
 
 async def contato(update: Update, context):
     await update.message.reply_text(
@@ -118,22 +138,6 @@ async def contato(update: Update, context):
         parse_mode="Markdown",
         disable_web_page_preview = True
     )
-
-
-async def ajuda(update: Update, context):
-    await update.message.reply_text(
-        "🐆 *COMANDOS DISPONÍVEIS*:\n\n"
-        "/start - Inicia o bot\n"
-        "/jogadores - Time atual\n"
-        "/jogos - Próximas partidas\n"
-        "/memes - Memes aleatórios\n"
-        "/vitorias - Ùltimos resultados\n"
-        "/live - Placar ao vivo (mockado)\n"
-        "/torcida - Gritos de guerra!\n"
-        "/contato - Links oficiais",
-        parse_mode="Markdown"
-    )
-
 
 async def memes(update: Update, context):
     try:  # Usei um try/except pra evitar que o bot morra se o meme não carregar!

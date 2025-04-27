@@ -1,22 +1,30 @@
-# 🐆 FURIA Bot - Telegram
-Bot oficial (não oficial) da FURIA!  
+# 🐆 FURIA Bot - Telegram  
+*"Aqui é FURIA PORRAAAA!" - Bot não-oficial criado por uma fã para outros(as) fãs!*  
 
-## Comandos  
-- `/start` - Mensagem de boas-vindas  
-- `/memes` - Memes aleatórios  
-- `/vitorias` - Últimos resultados  
-- `/jogadores` - Players atuais  
-- `/jogos` - Próximas partidas
-- `/torcida` - Gritos de guerra!
-- `/live` - Placar ao vivo (mockado)
-- `/contato` - Links oficiais
-- `/ajuda` - Comandos disponíveis  
+## 🎮 Todos os Comandos
+| Comando | O que faz? | Destaque |
+|---------|-----------|----------|
+| `/start` | Menu principal | Mostra todos os comandos |
+| `/jogadores` | Elenco atual | KSCERATO, FalleN e cia |
+| `/jogos` | Próximas partidas | Datas e torneios |
+| `/vitorias` | Últimos resultados | Placar detalhado |
+| `/memes` | Memes aleatórios | 2 surpresas (por enquanto!) |
+| `/live` | Placar ao vivo | Mock de jogo em andamento |
+| `/torcida` | Gritos de guerra | "FURIA!", "VAMO PORRA!" |
+| `/contato` | Links oficiais | Site, Instagram e WhatsApp |
+| `/ajuda` | Lista completa | Essa tabela que você está vendo |
 
-## Como executar  
-1. Clone o repositório  
-2. Instale as dependências: `pip install -r requirements.txt`  
-3. Crie um arquivo `.env` com `TELEGRAM_TOKEN=seu_token`  
-4. Execute: `python furia_bot.py`  
+## 💻 Como Rodar Localmente
+```bash
+# Clone o repositório
+git clone https://github.com/BrunaLipovscek/furia-bot.git
+cd furia-bot
 
-## Como Contribuir  
-Envie seus memes da FURIA em `memes/` via Pull Request!  
+# Instale as dependências
+pip install -r requirements.txt
+
+# Configure seu token (obtenha com @BotFather)
+echo "TELEGRAM_TOKEN=seu_token_aqui" > .env
+
+# Inicie o bot!
+python furia_bot.py  
