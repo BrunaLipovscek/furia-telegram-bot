@@ -1,6 +1,12 @@
 from telegram import Update  
 from telegram.ext import Application, CommandHandler, MessageHandler, filters  
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Carrega o .env
+TOKEN = os.getenv("TELEGRAM_TOKEN")  # Lê o token com segurança
+
 TOKEN = "SEU_TOKEN_AQUI"  
 
 # ---- COMANDOS ---- #
