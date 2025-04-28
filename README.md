@@ -17,6 +17,9 @@
 ## 🎥 Vídeo de Demonstração  
 [![Assista ao vídeo](https://img.youtube.com/vi/rbkUDl_-xo0/0.jpg)](https://youtu.be/rbkUDl_-xo0)
 
+## 🌐 Landing Page
+Acesse: [https://brunalipovscek.github.io/furia-telegram-bot](https://brunalipovscek.github.io/furia-telegram-bot)
+
 ## 💻 Como Rodar Localmente
 ```bash
 # Clone o repositório
