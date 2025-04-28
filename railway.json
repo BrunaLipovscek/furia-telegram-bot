@@ -1,0 +1,11 @@
+{
+  "builds": [
+    {
+      "src": "furia_bot.py",
+      "use": "@railway/python",
+      "config": {
+        "startCommand": "python furia_bot.py"
+      }
+    }
+  ]
+}
