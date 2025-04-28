@@ -14,6 +14,9 @@
 | `/contato` | Links oficiais | Site, Instagram e WhatsApp |
 | `/ajuda` | Lista completa | Essa tabela que você está vendo |
 
+## 🎥 Vídeo de Demonstração  
+[![Assista ao vídeo](https://img.youtube.com/vi/rbkUDl_-xo0/0.jpg)](https://youtu.be/rbkUDl_-xo0)
+
 ## 💻 Como Rodar Localmente
 ```bash
 # Clone o repositório
@@ -27,4 +30,4 @@ pip install -r requirements.txt
 echo "TELEGRAM_TOKEN=seu_token_aqui" > .env
 
 # Inicie o bot!
-python furia_bot.py  
+python furia_bot.py
