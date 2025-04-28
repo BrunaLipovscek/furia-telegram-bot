@@ -10,7 +10,7 @@ from telegram import ReplyKeyboardMarkup
 
 load_dotenv()
 
-TOKEN = os.getenv("TELEGRAM_TOKEN")
+TOKEN = os.environ['TOKEN']
 
 
 # Comandos
@@ -185,3 +185,4 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"Putz, F for respect: {e}")
         print("Mas o arT já tá rushando B pra resolver! 💥")  # hahahahahha
+
