@@ -10,8 +10,9 @@ from telegram import ReplyKeyboardMarkup
 
 load_dotenv()
 
-TOKEN = os.environ['TOKEN']
-
+TOKEN = os.getenv('TOKEN')
+if not TOKEN:
+    raise ValueError("Token não encontrado. Configure a variável de ambiente TOKEN.")
 
 # Comandos
 async def start(update: Update, context):
