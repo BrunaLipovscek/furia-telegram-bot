@@ -10,7 +10,7 @@ from telegram import ReplyKeyboardMarkup
 
 load_dotenv()
 
-TOKEN = os.getenv('TOKEN')
+TOKEN = os.getenv('TOKEN') # Pra resolver os BO do TOKEN com o Railway
 if not TOKEN:
     raise ValueError("Token não encontrado. Configure a variável de ambiente TOKEN.")
 
